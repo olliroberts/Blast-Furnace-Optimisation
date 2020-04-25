@@ -31,15 +31,16 @@ import Clean_and_Prepare as cp
 #                           min_samples_leaf=1, min_samples_split=2,
 #                           min_weight_fraction_leaf=0.0, n_estimators=500,
 #                           n_iter_no_change=None, presort='auto',
-#                           random_state=None, subsample=1.0, tol=0.0001,
+#                           random_state=None, subsample=0.5, tol=0.0001,
 #                           validation_fraction=0.1, verbose=0,
 #                           warm_start=False)
 # =============================================================================
 # Initiate Model
+# 2 sources of randomness from 'subsample' and 'max_features'
 gbdt = GradientBoostingRegressor(loss='ls', learning_rate=0.1,
                                  n_estimators=500, max_depth=4,
                                  random_state=None, max_features='sqrt',
-                                 warm_start=False)
+                                 warm_start=False, subsample=0.5)
 # Train the model on training data
 gbdt.fit(cp.train_bf4_mdl, cp.train_outputs)
 
